@@ -47,9 +47,9 @@ int main(int argc, char *argv[]) {
         clock_t start_time = clock();
         pin_brute(argv[1]);
         clock_t end_time = clock();
-        total_time += ((double) (end - start)) / CLOCKS_PER_SEC;;
+        total_time += ((double) (end_time - start_time)) / CLOCKS_PER_SEC;;
     }
 
-    printf("Average execution time: %lfs", total / 10);
+    printf("Average execution time: %lfs", total_time / 10);
     return 0;
 }
