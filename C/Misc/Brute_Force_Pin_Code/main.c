@@ -5,29 +5,29 @@
 #include <math.h>
 
 
-int pin_brute(char* input) {
-    unsigned index = strlen(input) - 1;
-    char *pin = calloc(index + 1, sizeof(char));
-    memset(pin, '0', index + 1);
+int pin_brute(char* pin_code) {
+    unsigned last_index = strlen(pin_code) - 1;
+    char *attempt = calloc(last_index + 1, sizeof(char));
+    memset(attempt, '0', last_index + 1);
 
     while (1) {
         for (unsigned i = 0; i <= 9; i++) {
-            if (strcmp(pin, input) == 0) {
-                free(pin);
+            if (strcmp(attempt, pin_code) == 0) {
+                free(attempt);
                 return 0;
             }
 
-            pin[index]++;
+            attempt[last_index]++;
         }
 
-        pin[index] = '9';
-        for (unsigned j = index; j >= 0; j--) {
-            if (pin[j] == '9') {
-                pin[j] = '0';
+        attempt[last_index] = '9';
+        for (unsigned j = last_index; j >= 0; j--) {
+            if (attempt[j] == '9') {
+                attempt[j] = '0';
                 continue;
             }
 
-            pin[j]++;
+            attempt[j]++;
             break;
         }
     }
@@ -50,6 +50,6 @@ int main(int argc, char *argv[]) {
         total_time += ((double) (end_time - start_time)) / CLOCKS_PER_SEC;;
     }
 
-    printf("Average execution time: %lfs", total_time / 10);
+    printf("Average execution time: %.3lfs\n", total_time / 10);
     return 0;
 }

@@ -80,4 +80,4 @@ def brute_force_pin_code(password, functions):
     return None
 
 
-brute_force_pin_code("9999999", [pin_code_str, pin_code_int, pin_code_itertools_str, pin_code_itertools_int])
+# brute_force_pin_code("9999999", [pin_code_str, pin_code_int, pin_code_itertools_str, pin_code_itertools_int])
