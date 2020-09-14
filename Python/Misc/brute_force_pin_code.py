@@ -6,20 +6,14 @@ def pin_code_itertools_int(pin_code):
     pin_code = tuple([int(digit) for digit in pin_code])
     digits = [x for x in range(10)]
     attempts = product(digits, repeat=len(pin_code))
-    for attempt in attempts:
-        if attempt == pin_code:
-            return True
-    return False
+    return pin_code in attempts
 
 
 def pin_code_itertools_str(pin_code):
     pin_code = tuple(pin_code)
     digits = [digit for digit in "0123456789"]
     attempts = product(digits, repeat=len(pin_code))
-    for attempt in attempts:
-        if attempt == pin_code:
-            return True
-    return False
+    return pin_code in attempts
 
 
 def pin_code_int(pin_code):
@@ -80,4 +74,4 @@ def brute_force_pin_code(password, functions):
     return None
 
 
-# brute_force_pin_code("9999999", [pin_code_str, pin_code_int, pin_code_itertools_str, pin_code_itertools_int])
+brute_force_pin_code("9999999", [pin_code_str, pin_code_int, pin_code_itertools_str, pin_code_itertools_int])
